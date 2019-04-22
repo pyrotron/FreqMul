@@ -1,4 +1,4 @@
-﻿/*
+/*
  PWM frequency multiplier x128
 
              100n
@@ -9,7 +9,7 @@
       │ │ 3        6 ├─ PB1 (OC1A)  OUTPUT
  GND ─┴─┤ 4        5 │
         └────────────┘
-           ATTiny45
+           ATtiny45
 
 fuses: lfuse=0xe2 hfuse=0xdf
 */
@@ -18,7 +18,8 @@ fuses: lfuse=0xe2 hfuse=0xdf
 #include <stdlib.h>
 #include <limits.h>
 
-//#define F_CPU 8000000UL
+#define F_CPU 8000000UL
+#define F_PWM_IN 180U
 
 register uint8_t time_h asm("r4"); // High part of time counter
 register uint16_t time_cycle asm("r12"); // Period 
@@ -64,7 +65,7 @@ __attribute__((naked)) int main(void) {
 ISR(INT0_vect, ISR_NAKED) {
 
 	// F_CPU / Timer1 prescaler / F_PWM_IN / grades / 4
-	#define THRESHOLD (F_CPU / 1 / 180 / 100 / 4)
+	#define THRESHOLD (F_CPU / 1 / F_PWM_IN / 100 / 4)
 
 	uint16_t time;
 	uint8_t time_l = TCNT0;
