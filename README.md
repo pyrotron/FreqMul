@@ -9,4 +9,6 @@ PWM frequency multiplier for display backlight
          │ │ 3        6 ├─ PB1 (OC1A)  OUTPUT
     GND ─┴─┤ 4        5 │
            └────────────┘
-              ATTiny45
+              ATtiny45
+              
+Compiler is avr-gcc / WinAVR
