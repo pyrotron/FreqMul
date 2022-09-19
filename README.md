@@ -12,3 +12,15 @@ PWM frequency multiplier for display backlight
               ATtiny45
               
 Compiler is avr-gcc / WinAVR
+
+**Fuses**
+
+lfuse: 0xE2  
+hfuse: 0xDF  
+efuse: 0xFF  
+
+AVRDUDE	-U lfuse:w:0xE2:m	-U hfuse:w:0xDF:m	-U efuse:w:0xFF:m
+
+![fuses](fuses.png)
+
+[Link to fuses calculator](http://eleccelerator.com/fusecalc/fusecalc.php?chip=attiny45&LOW=E2&HIGH=DF&EXTENDED=FF&LOCKBIT=FF)
